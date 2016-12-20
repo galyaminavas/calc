@@ -36,4 +36,4 @@ int list_len(list *ln);
 
 int compare_lists(list *l1, list *l2);
 
-list* get_list();
+list* get_list(char c);

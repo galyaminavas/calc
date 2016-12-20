@@ -21,3 +21,5 @@ stack* stack_make();
 void push(stack *s, list *data);
 
 list* pop(stack *s);
+
+list* pick(stack *s);
