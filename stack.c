@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "num_list.h"
-#include "manager.h"
 #include "stack.h"
+#include "manager.h"
 
 node_stack* stack_node_init(list *data)
 {
@@ -46,8 +46,11 @@ void push(stack *s, list *data)
 list* pop(stack *s)
 {
     list *p = s->last->value;
-    s->last = s->last->prev;
-    stack_node_delete(s->last->next);
+    if (s->last->prev)
+    {
+        s->last = s->last->prev;
+        stack_node_delete(s->last->next);
+    }
     return p;
 }
 

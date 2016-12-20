@@ -59,7 +59,7 @@ int main()
             case '=':
                 if (pick(main_stack))
                 {
-                    list_print(pick(main_stack->last));
+                    list_print(pick(main_stack));
                 }
                 break;
             case ' ':
@@ -77,10 +77,10 @@ int main()
                     fprintf(stderr, "empty stack\n");
                     continue;
                 }
-                operator_switch(c, num1, num2);
+                operator_switch(c, num1, num2, main_stack);
                 break;
         }
-    return 0;
     }
+    return 0;
 }
 
