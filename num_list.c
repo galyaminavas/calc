@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "num_list.h"
+#include "manager.h"
+#include "stack.h"
 
 node* node_init(int data)
 {
@@ -75,10 +77,10 @@ void list_add_last(list *ln, int data)
     }
 }
 
-list* get_list()
+list* get_list(char c)
 {
     list *ln = list_make();
-    char c = '\0';
+    list_add_front(ln, c - 48);
     while ((c = fgetc(stdin)) != '\n')
     {
         if (c == '-')
@@ -206,16 +208,16 @@ int compare_lists(list *l1, list *l2)
     }
     node *curr1 = l1->last;
     node *curr2 = l2->last;
-    while (curr1 == curr2)
+    while (curr1->value == curr2->value)
     {
         curr1 = curr1->prev;
         curr2 = curr2->prev;
     }
-    if (curr1 < curr2)
+    if (curr1->value < curr2->value)
     {
         delta = -1;
     }
-    else if (curr1 > curr2)
+    else if (curr1->value > curr2->value)
     {
         delta = 1;
     }

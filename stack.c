@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "num_list.h"
+#include "manager.h"
 #include "stack.h"
 
 node_stack* stack_node_init(list *data)
@@ -47,6 +48,12 @@ list* pop(stack *s)
     list *p = s->last->value;
     s->last = s->last->prev;
     stack_node_delete(s->last->next);
+    return p;
+}
+
+list* pick(stack *s)
+{
+    list *p = s->last->value;
     return p;
 }
 
