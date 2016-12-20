@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "num_list.h"
-#include "manager.h"
 #include "stack.h"
 
 node* node_init(int data)

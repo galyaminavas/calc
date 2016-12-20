@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "num_list.h"
-#include "manager.h"
 #include "stack.h"
+#include "manager.h"
 
 /*void swap(list *l1, list *l2)
 {
