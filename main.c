@@ -82,7 +82,9 @@ int main()
                     }
                 }
                 num2 = pop(main_stack);
+                list_print(num2);
                 num1 = pop(main_stack);
+                list_print(num1);
                 if (!num1 || !num2)
                 {
                     if (num2)

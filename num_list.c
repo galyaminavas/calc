@@ -183,7 +183,7 @@ list* list_subtraction(list *l1, list *l2)
         }
         curr1 = curr1->next;
     }
-    while (l1->last->value == 0)
+    while (l1->last->value == 0 && l1->last != l1->first)
     {
         remove_last(l1);
     }
@@ -207,10 +207,22 @@ int compare_lists(list *l1, list *l2)
     }
     node *curr1 = l1->last;
     node *curr2 = l2->last;
-    while (curr1->value == curr2->value)
+    while (curr1 && curr2 && curr1->value == curr2->value)
     {
         curr1 = curr1->prev;
         curr2 = curr2->prev;
+    }
+    if (!curr1 && !curr2)
+    {
+        return 0;
+    }
+    else if (!curr1 && curr2)
+    {
+        return -1;
+    }
+    else if (curr1 && !curr2)
+    {
+        return 1;
     }
     if (curr1->value < curr2->value)
     {
