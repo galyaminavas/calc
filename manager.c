@@ -54,6 +54,7 @@ void operator_switch (char oper, list *l1, list *l2)
                         l2->sign = 1;
                         list_subtraction(l2, l1);
                     }
+                    break;
                 case 1:
                     l2->sign = 0;
                     if (compare_lists(l1, l2) >= 0)
@@ -64,6 +65,7 @@ void operator_switch (char oper, list *l1, list *l2)
                     {
                         list_addition(l2, l1);
                     }
+                    break;
                 case 2:
                     if (compare_lists(l1, l2) >= 0)
                     {
@@ -74,6 +76,7 @@ void operator_switch (char oper, list *l1, list *l2)
                         l2->sign = 1;
                         list_addition(l2, l1);
                     }
+                    break;
                 case 3:
                     l2->sign = 0;
                     if (compare_lists(l1, l2) >= 0)
@@ -84,6 +87,7 @@ void operator_switch (char oper, list *l1, list *l2)
                     {
                         list_subtraction(l2, l1);
                     }
+                    break;
                 default:
                     break;
             }

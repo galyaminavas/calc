@@ -97,6 +97,7 @@ void remove_last(list *ln)
 {
     ln->last = ln->last->prev;
     node_delete(ln->last->next);
+    ln->last->next = NULL;
 }
 
 int list_len(list *ln)

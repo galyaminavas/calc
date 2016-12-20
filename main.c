@@ -38,6 +38,13 @@ int main()
     //long_1 = list_addition(long_1, long_2);
     list_print(long_1);
     list_print(long_2);
+    
+    //stack *main_stack = stack_make();
+    
+    //while (1)
+    //{
+        
+    //}
     return 0;
 }
 
