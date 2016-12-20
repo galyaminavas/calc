@@ -4,12 +4,6 @@
 #include "manager.h"
 #include "stack.h"
 
-typedef struct stack_node
-{
-    list *data;
-    struct stack_node *prev;
-} stack_node;
-
 /*stack_node* stack_node_init(list* l)
 {
     stack_node *sn = (stack_node *)malloc(sizeof(stack_node));
@@ -71,9 +65,22 @@ int main()
             case ' ':
             case '\n':
                 break;
-            
-    }
+            default:
+                num2 = pop(main_stack);
+                num1 = pop(main_stack);
+                if (!num1 || !num2)
+                {
+                    if (num2)
+                    {
+                        push(main_stack, num2);
+                    }
+                    fprintf(stderr, "empty stack\n");
+                    continue;
+                }
+                operator_switch(c, num1, num2);
+                break;
+        }
     return 0;
-}
+    }
 }
 
