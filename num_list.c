@@ -183,11 +183,19 @@ list* list_subtraction(list *l1, list *l2)
         }
         curr1 = curr1->next;
     }
-    while (l1->last->value == 0 && l1->last != l1->first)
+    while (l1->last->value == 0)
     {
         remove_last(l1);
     }
     return(l1);
+}
+
+list* list_mult(list *l1, list *l2)
+{
+    list *result = list_make();
+    node *curr1 = l1->first;
+    node *curr2 = l2->first;
+    node *curr_result = result->first;
 }
 
 int compare_lists(list *l1, list *l2)
@@ -234,3 +242,4 @@ int compare_lists(list *l1, list *l2)
     }
     return delta;
 }
+
