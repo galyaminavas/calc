@@ -18,16 +18,12 @@ void operator_switch (char oper, list *l1, list *l2, stack *s)
                     {
                         list *result = list_make();
                         result = list_subtraction(l1, l2);
-                        //pop(s);
-                        //pop(s);
                         push(s, result);
                     }
                     else
                     {
                         list *result = list_make();
                         result = list_subtraction(l2, l1);
-                        //pop(s);
-                        //pop(s);
                         push(s, result);
                     }
                     break;
@@ -37,16 +33,12 @@ void operator_switch (char oper, list *l1, list *l2, stack *s)
                     {
                         list *result = list_make();
                         result = list_addition(l1, l2);
-                        //pop(s);
-                        //pop(s);
                         push(s, result);
                     }
                     else
                     {
                         list *result = list_make();
                         result = list_addition(l2, l1);
-                        //pop(s);
-                        //pop(s);
                         push(s, result);
                     }
                     break;
@@ -62,8 +54,6 @@ void operator_switch (char oper, list *l1, list *l2, stack *s)
                     {
                         list *result = list_make();
                         result = list_subtraction(l1, l2);
-                        //pop(s);
-                        //pop(s);
                         push(s, result);
                     }
                     else
@@ -71,8 +61,6 @@ void operator_switch (char oper, list *l1, list *l2, stack *s)
                         l2->sign = 1;
                         list *result = list_make();
                         result = list_subtraction(l2, l1);
-                        //pop(s);
-                        //pop(s);
                         push(s, result);
                     }
                     break;
@@ -82,16 +70,12 @@ void operator_switch (char oper, list *l1, list *l2, stack *s)
                     {
                         list *result = list_make();
                         result = list_addition(l1, l2);
-                        //pop(s);
-                        //pop(s);
                         push(s, result);
                     }
                     else
                     {
                         list *result = list_make();
                         result = list_addition(l2, l1);
-                        //pop(s);
-                        //pop(s);
                         push(s, result);
                     }
                     break;
@@ -100,8 +84,6 @@ void operator_switch (char oper, list *l1, list *l2, stack *s)
                     {
                         list *result = list_make();
                         result = list_addition(l1, l2);
-                        //pop(s);
-                        //pop(s);
                         push(s, result);
                     }
                     else
@@ -109,8 +91,6 @@ void operator_switch (char oper, list *l1, list *l2, stack *s)
                         l2->sign = 1;
                         list *result = list_make();
                         result = list_addition(l2, l1);
-                        //pop(s);
-                        //pop(s);
                         push(s, result);
                     }
                     break;
@@ -120,16 +100,12 @@ void operator_switch (char oper, list *l1, list *l2, stack *s)
                     {
                         list *result = list_make();
                         result = list_subtraction(l1, l2);
-                        //pop(s);
-                        //pop(s);
                         push(s, result);
                     }
                     else
                     {
                         list *result = list_make();
                         result = list_subtraction(l2, l1);
-                        //pop(s);
-                        //pop(s);
                         push(s, result);
                     }
                     break;
@@ -148,8 +124,6 @@ void operator_switch (char oper, list *l1, list *l2, stack *s)
                         l1->sign = 0;
                         list *result = list_make();
                         result = list_mult(l1, l2);
-                        //pop(s);
-                        //pop(s);
                         push(s, result);
                     }
                     else
@@ -157,8 +131,6 @@ void operator_switch (char oper, list *l1, list *l2, stack *s)
                         l2->sign = 0;
                         list *result = list_make();
                         result = list_mult(l2, l1);
-                        //pop(s);
-                        //pop(s);
                         push(s, result);
                     }
                     break;
@@ -171,8 +143,6 @@ void operator_switch (char oper, list *l1, list *l2, stack *s)
                         list *result = list_make();
                         result = list_mult(l1, l2);
                         result->sign = 1;
-                        //pop(s);
-                        //pop(s);
                         push(s, result);
                     }
                     else
@@ -180,8 +150,6 @@ void operator_switch (char oper, list *l1, list *l2, stack *s)
                         list *result = list_make();
                         result = list_mult(l2, l1);
                         result->sign = 1;
-                        //pop(s);
-                        //pop(s);
                         push(s, result);
                     }
                     break;
@@ -194,6 +162,8 @@ void operator_switch (char oper, list *l1, list *l2, stack *s)
             if (list_len(l2) == 1 && l2->first->value == 0)
             {
                 printf("you should not divide by zero\n");
+                push(s, l1);
+                push(s, l2);
                 break;
             }
             switch(sumsigns)
@@ -203,8 +173,6 @@ void operator_switch (char oper, list *l1, list *l2, stack *s)
                 {
                     list *result = list_make();
                     result = list_div(l1, l2);
-                    //pop(s);
-                    //pop(s);
                     push(s, result);
                     break;
                 }
@@ -213,8 +181,6 @@ void operator_switch (char oper, list *l1, list *l2, stack *s)
                 {
                     list *l0 = list_make();
                     l0 = list_div(l1, l2);
-                    //pop(s);
-                    //pop(s);
                     if (compare_lists(l1, l2) >= 0)
                     {
                         l0->sign = 1;

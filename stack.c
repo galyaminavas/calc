@@ -60,10 +60,6 @@ list* pop(stack *s)
         stack_node_delete(s->last);
         s->last = NULL;
     }
-    //else if (s->last)
-    //{
-        //stack_node_delete(s->last);
-    //}
     return p;
 }
 
