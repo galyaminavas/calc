@@ -4,23 +4,6 @@
 #include "stack.h"
 #include "manager.h"
 
-/*stack_node* stack_node_init(list* l)
-{
-    stack_node *sn = (stack_node *)malloc(sizeof(stack_node));
-    sn->data = l;
-    sn->prev = 0;
-    return sn;
-}*/
-
-/*stack_node* stack_node_delete(stack_node *sn)
-{
-    if (sn->data)
-    {
-        
-    }
-    return sn;
-}*/
-
 int main()
 {
     list *num1 = NULL;
