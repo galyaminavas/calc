@@ -202,8 +202,10 @@ list* list_subtraction(list *l1, list *l2)
 list* list_mult(list *l1, list *l2)
 {
     list *result = list_make();
-    if ((list_len(l2) == 1 && l2->last->value == 0 && l2->last->value == 0)
-        || (list_len(l1) == 1 && l1->last->value == 0 && l1->last->value == 0))
+    if (
+        (list_len(l2) == 1 && l2->last->value == 0 && l2->last->value == 0)
+        || (list_len(l1) == 1 && l1->last->value == 0 && l1->last->value == 0)
+        )
         {
             list_add_front(result, 0);
             return result;
@@ -300,13 +302,13 @@ list* int_mult(list *l1, int n)
 
 int getqout(list *l1, list *l2)
 {
-    int qout = 0;
-    for (qout = 0; qout < 10; qout++)
+    int q = 0;
+    for (q = 0; q < 10; q++)
     {
-        if ((compare_lists(int_mult(l2, qout), l1) <= 0)
-            && (compare_lists(int_mult(l2, qout + 1), l1) > 0))
+        if ((compare_lists(int_mult(l2, q), l1) <= 0)
+            && (compare_lists(int_mult(l2, q + 1), l1) > 0))
         {
-            return qout;
+            return q;
         }
     }
     return 1;
