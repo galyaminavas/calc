@@ -293,20 +293,6 @@ list* int_mult(list *l1, int n)
     return result;
 }
 
-int getqout(list *l1, list *l2)
-{
-    int q = 0;
-    for (q = 0; q < 10; q++)
-    {
-        if ((compare_lists(int_mult(l2, q), l1) <= 0)
-            && (compare_lists(int_mult(l2, q + 1), l1) > 0))
-        {
-            return q;
-        }
-    }
-    return 1;
-}
-
 list* list_div(list *l1, list *l2)
 {
     list *result = list_make();
@@ -329,7 +315,19 @@ list* list_div(list *l1, list *l2)
     
     do 
     {
-        int q = getqout(subres, l2);
+        int q = 0;
+        for ( ; q < 10; q++)
+        {
+            if ((compare_lists(int_mult(l2, q), subres) <= 0)
+                && (compare_lists(int_mult(l2, q + 1), subres) > 0))
+                {
+                    break;
+                }
+        }
+        if (q == 10)
+        {
+            q = 1;
+        }
         list_add_front(result, q);
         subres = list_subtraction(subres, int_mult(l2, q));
         l1_curr = l1_curr->prev;
