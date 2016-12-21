@@ -39,7 +39,6 @@ int main()
                     printf("there is no numbers in stack\n");
                 }
                 break;
-            case ' ':
             case '\n':
                 break;
             default:

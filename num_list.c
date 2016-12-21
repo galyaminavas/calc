@@ -258,19 +258,6 @@ list* list_mult(list *l1, list *l2)
     return result;
 }
 
-list* int_to_list(int n)
-{
-    list *lc = list_make();
-    list_add_last(lc, n % 10);
-    n = n / 10;
-    while (n > 0)
-    {
-        list_add_last(lc, n % 10);
-        n = n / 10;
-    }
-    return lc;
-}
-
 list *list_delete(list *l)
 {
     node *curr = l->first;
@@ -293,7 +280,14 @@ list *list_delete(list *l)
 
 list* int_mult(list *l1, int n)
 {
-    list *l2 = int_to_list(n);
+    list *l2 = list_make();
+    list_add_last(l2, n % 10);
+    n = n / 10;
+    while (n > 0)
+    {
+        list_add_last(l2, n % 10);
+        n = n / 10;
+    }
     list *result = list_mult(l1, l2);
     l2 = list_delete(l2);
     return result;
