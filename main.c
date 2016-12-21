@@ -36,7 +36,7 @@ int main()
                 }
                 else 
                 {
-                    printf("stack is empty\n");
+                    printf("there is no numbers in stack\n");
                 }
                 break;
             case ' ':

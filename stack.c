@@ -65,7 +65,10 @@ list* pop(stack *s)
 
 list* pick(stack *s)
 {
-    list *p = s->last->value;
-    return p;
+    if (s->last)
+    {
+        return s->last->value;
+    }
+    return NULL;
 }
 
