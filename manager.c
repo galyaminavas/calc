@@ -18,7 +18,6 @@ void operator_switch (char oper, list *l1, list *l2, stack *s)
     switch(oper)
     {
         case '+':
-        {
             switch(sumsigns)
             {
                 case 1:
@@ -47,9 +46,7 @@ void operator_switch (char oper, list *l1, list *l2, stack *s)
                     break;
             }
             break;
-        }
         case '-':
-        {
             switch(sumsigns)
             {
                 case 0:
@@ -100,9 +97,7 @@ void operator_switch (char oper, list *l1, list *l2, stack *s)
                     break;
             }
             break;
-        }
         case '*':
-        {
             switch(sumsigns)
             {
                 case 0:
@@ -131,16 +126,17 @@ void operator_switch (char oper, list *l1, list *l2, stack *s)
                     }
                     else
                     {
-                        list *result = list_mult(l1, l2);
+                        list *result = list_mult(l2, l1);
                         result->sign = 1;
                         push(s, result);
                     }
                     break;
                 }
+                default:
+                    break;
             }
-        }
+            break;
         case '/':
-        {
             if (list_len(l2) == 1 && l2->first->value == 0)
             {
                 printf("you should not divide by zero\n");
@@ -170,12 +166,15 @@ void operator_switch (char oper, list *l1, list *l2, stack *s)
                     }
                     break;
                 }
+                default:
+                    break;
             }
-        }
+            break;
         default:
         {
-            printf("incorrect input");
+            printf("incorrect input\n");
             break;
         }
     }
+    return;
 }
