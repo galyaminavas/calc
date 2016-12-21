@@ -43,6 +43,11 @@ int main()
             case '\n':
                 break;
             default:
+                if (c != '+' && c != '-' && c != '*' && c != '/')
+                {
+                    printf("incorrect input\n");
+                    break;
+                }
                 if (c == '-')
                 {
                     c = fgetc(stdin);

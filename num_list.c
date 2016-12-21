@@ -42,7 +42,6 @@ void list_add_front(list *ln, int data)
         new_node->next = ln->first;
         ln->first = new_node;
     }
-    return;
 }
 
 void list_print(list *number)

@@ -40,7 +40,6 @@ void push(stack *s, list *data)
         new_node->prev = s->last;
         s->last = new_node;
     }
-    return;
 }
 
 list* pop(stack *s)
@@ -71,4 +70,3 @@ list* pick(stack *s)
     }
     return NULL;
 }
-
