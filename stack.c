@@ -45,6 +45,10 @@ void push(stack *s, list *data)
 
 list* pop(stack *s)
 {
+    if (s->last == NULL)
+    {
+        return NULL;
+    }
     list *p = s->last->value;
     if (s->last->prev)
     {
