@@ -139,7 +139,43 @@ void operator_switch (char oper, list *l1, list *l2, stack *s)
                 }
             }
         }
+        case '/':
+        {
+            if (list_len(l2) == 1 && l2->first->value == 0)
+            {
+                printf("you should not divide by zero\n");
+                break;
+            }
+            switch(sumsigns)
+            {
+                case 0:
+                case 3:
+                {
+                    push(s, list_div(l1, l2));
+                    break;
+                }
+                case 1:
+                case 2:
+                {
+                    list *l0 = list_make();
+                    l0 = list_div(l1, l2);
+                    if (compare_lists(l1, l2) >= 0)
+                    {
+                        l0->sign = 1;
+                        push(s, l0);
+                    }
+                    else
+                    {
+                        push(s, l0);
+                    }
+                    break;
+                }
+            }
+        }
         default:
+        {
+            printf("incorrect input");
             break;
+        }
     }
 }

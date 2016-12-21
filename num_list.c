@@ -247,6 +247,97 @@ list* list_mult(list *l1, list *l2)
     return result;
 }
 
+list* int_to_list(int n)
+{
+    list *lc = list_make();
+    list_add_last(lc, n % 10);
+    n = n / 10;
+    while (n > 0)
+    {
+        list_add_last(lc, n % 10);
+        n = n / 10;
+    }
+    return lc;
+}
+
+list *list_delete(list *l)
+{
+    node *curr = l->first;
+    while (curr)
+    {
+        if (curr->next)
+        {
+            curr = curr->next;
+            curr->prev = node_delete(curr->prev);
+        }
+        else
+        {
+            curr = node_delete(curr);
+        }
+    }
+    free(l);
+    l = NULL;
+    return l;
+}
+
+list* int_mult(list *l1, int n)
+{
+    list *l2 = int_to_list(n);
+    list *result = list_mult(l1, l2);
+    l2 = list_delete(l2);
+    return result;
+}
+
+int getqout(list *l1, list *l2)
+{
+    int qout = 0;
+    for (qout = 0; qout < 10; qout++)
+    {
+        if ((compare_lists(int_mult(l2, qout), l1) <= 0)
+            && (compare_lists(int_mult(l2, qout + 1), l1) > 0))
+        {
+            return qout;
+        }
+    }
+    return 1;
+}
+
+list* list_div(list *l1, list *l2)
+{
+    list *result = list_make();
+    if (compare_lists(l1, l2) < 0)
+    {
+        list_add_last(result, 0);
+        return result;
+    }
+    
+    list *subres = list_make();
+    list_add_front(subres, l1->last->value);
+    
+    node *l1_curr = l1->last;
+    
+    while (compare_lists(subres, l2) < 0)
+    {
+        l1_curr = l1_curr->prev;
+        list_add_front(subres, l1_curr->value);
+    }
+    
+    do 
+    {
+        int q = getqout(subres, l2);
+        list_add_front(result, q);
+        subres = list_subtraction(subres, int_mult(l2, q));
+        l1_curr = l1_curr->prev;
+        if (l1_curr != NULL)
+        {
+            list_add_front(subres, l1_curr->value);
+        }
+    }
+    while(l1_curr != NULL);
+    subres = list_delete(subres);
+    return result;
+}
+
 int compare_lists(list *l1, list *l2)
 {
     int delta = list_len(l1) - list_len(l2);

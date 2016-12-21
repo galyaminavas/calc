@@ -34,6 +34,16 @@ list* list_subtraction(list *l1, list *l2);
 
 list* list_mult(list *l1, list *l2);
 
+list* int_to_list(int n);
+
+list *list_delete(list *l);
+
+list* int_mult(list *l1, int n);
+
+int getqout(list *l1, list *l2);
+
+list* list_div(list *l1, list *l2);
+
 int list_len(list *ln);
 
 int compare_lists(list *l1, list *l2);
