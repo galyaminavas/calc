@@ -32,6 +32,8 @@ list* list_addition(list *l1, list *l2);
 
 list* list_subtraction(list *l1, list *l2);
 
+list* list_mult(list *l1, list *l2);
+
 int list_len(list *ln);
 
 int compare_lists(list *l1, list *l2);

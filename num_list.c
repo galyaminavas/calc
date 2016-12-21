@@ -195,15 +195,57 @@ list* list_subtraction(list *l1, list *l2)
     return(l1);
 }
 
-/*list* list_mult(list *l1, list *l2)
+list* list_mult(list *l1, list *l2)
 {
     list *result = list_make();
     node *curr1 = l1->first;
     node *curr2 = l2->first;
+    while (curr1 || curr2)
+    {
+        if (curr1)
+        {
+            curr1 = curr1->next;
+            list_add_last(result, 0);
+        }
+        if (curr2)
+        {
+            curr2 = curr2->next;
+            list_add_last(result, 0);
+        }
+    }
+    curr1 = l1->first;
+    curr2 = l2->first;
     node *curr_result = result->first;
-    int result_len = list_len(l1) + list_len(l2) + 1;
-    
-}*/
+    node *prev_result = result->first;
+    while (curr2)
+    {
+        while (curr1)
+        {
+            curr_result->value += curr1->value * curr2->value;
+            curr1 = curr1->next;
+            curr_result = curr_result->next;
+        }
+        prev_result = prev_result->next;
+        curr_result = prev_result;
+        curr1 = l1->first;
+        curr2 = curr2->next;
+    }
+    node *curr_num = result->first;
+    while(curr_num->next)
+    {
+        if (curr_num->value >= 10)
+        {
+            curr_num->next->value += curr_num->value / 10;
+            curr_num->value %= 10;
+        }
+        curr_num = curr_num->next;
+    }
+    while (result->last->value == 0)
+    {
+        remove_last(result);
+    }
+    return result;
+}
 
 int compare_lists(list *l1, list *l2)
 {

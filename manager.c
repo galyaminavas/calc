@@ -101,6 +101,44 @@ void operator_switch (char oper, list *l1, list *l2, stack *s)
             }
             break;
         }
+        case '*':
+        {
+            switch(sumsigns)
+            {
+                case 0:
+                case 3:
+                {
+                    if (compare_lists(l1, l2) >= 0)
+                    {
+                        l1->sign = 0;
+                        push(s, list_mult(l1, l2));
+                    }
+                    else
+                    {
+                        l2->sign = 0;
+                        push(s, list_mult(l2, l1));
+                    }
+                    break;
+                }
+                case 1:
+                case 2:
+                {
+                    if (compare_lists(l1, l2) >= 0)
+                    {
+                        list *result = list_mult(l1, l2);
+                        result->sign = 1;
+                        push(s, result);
+                    }
+                    else
+                    {
+                        list *result = list_mult(l1, l2);
+                        result->sign = 1;
+                        push(s, result);
+                    }
+                    break;
+                }
+            }
+        }
         default:
             break;
     }
