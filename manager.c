@@ -179,16 +179,16 @@ void operator_switch (char oper, list *l1, list *l2, stack *s)
                 case 1:
                 case 2:
                 {
-                    list *l0 = list_make();
-                    l0 = list_div(l1, l2);
+                    list *result = list_make();
+                    result = list_div(l1, l2);
                     if (compare_lists(l1, l2) >= 0)
                     {
-                        l0->sign = 1;
-                        push(s, l0);
+                        result->sign = 1;
+                        push(s, result);
                     }
                     else
                     {
-                        push(s, l0);
+                        push(s, result);
                     }
                     break;
                 }
